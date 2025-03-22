@@ -76,8 +76,8 @@ class Node:
             n2.grad += self.grad * n1.value
 
     @staticmethod
-    def _to_node(x: Union["Node", Real]) -> "Node":
-        return x if isinstance(x, Node) else Node(x, requires_grad=False)
+    def _to_node(x: Union["Node", Real], requires_grad=False) -> "Node":
+        return x if isinstance(x, Node) else Node(x, requires_grad=requires_grad)
     
     def _ensure_grad(self: "Node") -> None:
         if self.grad is None:
